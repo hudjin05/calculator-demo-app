@@ -23,8 +23,8 @@ jobs:
         id: send_remote_tests
         uses: actions/github-script@v7
         env:
-          TARGET_OWNER: "VonWebsterLabajo"
-          TARGET_REPO: "calculator-test-demo-with-grafana"
+          TARGET_OWNER: "hudjin05"
+          TARGET_REPO: "calculator-demo-app"
           CALC_URL: "https://vonwebsterlabajo.github.io/calculator-demo-with-grafana-staging"
         with:
           github-token: ${{ secrets.CI_PAT }}

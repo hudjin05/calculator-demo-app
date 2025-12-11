@@ -36,11 +36,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Debug: List build output
-        run: |
-          echo "=== After Build ==="
-          ls -R .
-
       - name: Upload Pages artifact (static site)
         uses: actions/upload-pages-artifact@v3
         with:

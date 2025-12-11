@@ -142,7 +142,11 @@ jobs:
             const deadline = Date.now() + 20 * 60 * 1000;
             const dispatchedAtMs = Date.parse(DISPATCHED_AT);
 
-            let runId, run;
+            let runId = null;
+            let run = null;
+
+            core.info(`Looking for workflow runs in ${TARGET_OWNER}/${TARGET_REPO} after ${DISPATCHED_AT}`);
+            
             while (Date.now() < deadline) {
               const runs = await github.rest.actions.listWorkflowRuns({
                 owner: TARGET_OWNER,
@@ -151,6 +155,15 @@ jobs:
                 event: 'repository_dispatch',
                 per_page: 20
               });
+
+        
+              console.log("Recent runs:", runs.data.workflow_runs.map(r => ({
+              id: r.id,
+              created_at: r.created_at,
+              status: r.status,
+              conclusion: r.conclusion
+              })));
+
               const match = runs.data.workflow_runs.find(r => Date.parse(r.created_at) >= dispatchedAtMs);
               if (match) {
                 runId = match.id;
@@ -162,12 +175,18 @@ jobs:
 
             if (!runId) core.setFailed("Smoke test run not found.");
 
+            if (!runId) {
+              core.setFailed("Smoke test run not found within the deadline.");
+              return;
+            }
+
             while (Date.now() < deadline) {
               const res = await github.rest.actions.getWorkflowRun({
                 owner: TARGET_OWNER,
                 repo: TARGET_REPO,
                 run_id: runId
               });
+              
               run = res.data;
               core.info(`status=${run.status}, conclusion=${run.conclusion}`);
 

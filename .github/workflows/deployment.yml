@@ -103,8 +103,8 @@ jobs:
         uses: actions/github-script@v7
         env:
           TARGET_OWNER: "hudjin05"
-          TARGET_REPO: "calculator-demo-app-staging"
-          STAGING_URL: "https://hudjin05.github.io/calculator-demo-app-staging"
+          TARGET_REPO: "Playwright_Demo_Web_Shop"
+          STAGING_URL: "https://hudjin05.github.io/calculator-demo-app-staging/"
         with:
           github-token: ${{ secrets.CICD_TOKEN }}
           script: |

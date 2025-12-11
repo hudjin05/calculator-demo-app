@@ -1,4 +1,4 @@
-name: Deployments on Staging (automatic) + Production (with approval)
+name: Deployment on Staging (automatic) + Production (with approval)
 
 on:
   push:
@@ -186,7 +186,9 @@ jobs:
                 repo: TARGET_REPO,
                 run_id: runId
               });
-              
+
+
+
               run = res.data;
               core.info(`status=${run.status}, conclusion=${run.conclusion}`);
 

@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Debug: List workspace contents
+      - name: Debug workspace
         run: |
           echo "=== Workspace Files ==="
           ls -R .

@@ -24,7 +24,7 @@ jobs:
         uses: actions/github-script@v7
         env:
           TARGET_OWNER: "hudjin05"
-          TARGET_REPO: "calculator-demo-app"
+          TARGET_REPO: "Playwright_Demo_Web_Shop"
           CALC_URL: "https://hudjin05.github.io/calculator-demo-app/"
         with:
           github-token: ${{ secrets.CICD_TOKEN }}

@@ -1,4 +1,4 @@
-name: Deployment on Staging (automatic) + Production (with approval)
+name: Deployments on Staging (automatic) + Production (with approval)
 
 on:
   push:

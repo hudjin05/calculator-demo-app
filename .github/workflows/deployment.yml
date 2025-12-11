@@ -30,16 +30,10 @@ jobs:
           echo "=== Workspace Files ==="
           ls -R .
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
-
       - name: Upload Pages artifact (static site)
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist  # Use whatever folder appears after build
+          path: docs  # Use whatever folder appears after build
 
       # - name: Upload Pages artifact (static site)
       #   uses: actions/upload-pages-artifact@v3

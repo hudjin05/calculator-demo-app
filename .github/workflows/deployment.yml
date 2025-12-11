@@ -1,4 +1,4 @@
-name: Deploy on Staging (automatic) + Production (with approval)
+name: Deployment on Staging (automatic) + Production (with approval)
 
 on:
   push:
@@ -36,7 +36,7 @@ jobs:
     name: Deploy to Staging
     environment:
       name: staging
-      url: https://vonwebsterlabajo.github.io/calculator-demo-with-grafana-staging
+      url: https://hudjin05.github.io/calculator-demo-app-staging/
 
     steps:
       - name: Download Pages artifact
@@ -54,7 +54,7 @@ jobs:
       - name: Checkout staging repo (main)
         uses: actions/checkout@v4
         with:
-          repository: VonWebsterLabajo/calculator-demo-with-grafana-staging
+          repository: hudjin05/calculator-demo-app-staging
           ref: main
           token: ${{ secrets.CICD_TOKEN }}
           path: staging
@@ -92,9 +92,9 @@ jobs:
         id: send_smoke_tests
         uses: actions/github-script@v7
         env:
-          TARGET_OWNER: "VonWebsterLabajo"
+          TARGET_OWNER: "hudjin05"
           TARGET_REPO: "calculator-test-demo-with-grafana"
-          STAGING_URL: "https://vonwebsterlabajo.github.io/calculator-demo-with-grafana-staging"
+          STAGING_URL: "https://hudjin05.github.io/calculator-demo-app-staging"
         with:
           github-token: ${{ secrets.CICD_TOKEN }}
           script: |
@@ -121,8 +121,8 @@ jobs:
         id: wait_smoke_tests
         uses: actions/github-script@v7
         env:
-          TARGET_OWNER: "VonWebsterLabajo"
-          TARGET_REPO: "calculator-test-demo-with-grafana"
+          TARGET_OWNER: "hudjin05"
+          TARGET_REPO: "Playwright_Demo_Web_Shop"
           DISPATCHED_AT: ${{ steps.send_smoke_tests.outputs.dispatched_at }}
         with:
           github-token: ${{ secrets.CICD_TOKEN }}
@@ -178,7 +178,7 @@ jobs:
     name: Deploy to Production
     environment:
       name: production
-      url: https://vonwebsterlabajo.github.io/calculator-demo-with-grafana/
+      url: https://hudjin05.github.io/calculator-demo-app
 
     steps:
       - name: Deploy to GitHub Pages (Production)

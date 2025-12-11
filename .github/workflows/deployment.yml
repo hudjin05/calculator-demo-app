@@ -103,7 +103,7 @@ jobs:
         uses: actions/github-script@v7
         env:
           TARGET_OWNER: "hudjin05"
-          TARGET_REPO: "calculator-test-demo-with-grafana"
+          TARGET_REPO: "calculator-demo-app-staging"
           STAGING_URL: "https://hudjin05.github.io/calculator-demo-app-staging"
         with:
           github-token: ${{ secrets.CICD_TOKEN }}

@@ -25,10 +25,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Debug: List workspace contents
+        run: |
+          echo "=== Workspace Files ==="
+          ls -R .
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Debug: List build output
+        run: |
+          echo "=== After Build ==="
+          ls -R .
+
       - name: Upload Pages artifact (static site)
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: dist  # Use whatever folder appears after build
+
+      # - name: Upload Pages artifact (static site)
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: src
 
   deploy_staging:
     needs: package_site

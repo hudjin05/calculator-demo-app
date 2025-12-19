@@ -1,4 +1,4 @@
-name: Run Test on Push Request
+name: Run Test on PR
 
 on:
   pull_request:

@@ -103,7 +103,7 @@ jobs:
         uses: actions/github-script@v7
         env:
           TARGET_OWNER: "hudjin05"
-          TARGET_REPO: "Playwright_Demo_Web_Shop"
+          TARGET_REPO: "Cucumber_Selenium_CICD"
           STAGING_URL: "https://hudjin05.github.io/calculator-demo-app-staging/"
         with:
           github-token: ${{ secrets.CICD_TOKEN }}
@@ -132,7 +132,7 @@ jobs:
         uses: actions/github-script@v7
         env:
           TARGET_OWNER: "hudjin05"
-          TARGET_REPO: "Playwright_Demo_Web_Shop"
+          TARGET_REPO: "Cucumber_Selenium_CICD"
           DISPATCHED_AT: ${{ steps.send_smoke_tests.outputs.dispatched_at }}
         with:
           github-token: ${{ secrets.CICD_TOKEN }}
